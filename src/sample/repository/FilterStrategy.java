@@ -5,6 +5,6 @@ import sample.models.Item;
 import java.util.List;
 
 public interface FilterStrategy {
-    public List<Item> doFiltering(List<Item> items);
+    public List<Item> doFiltering(List<Item> items, String option);
 }
 

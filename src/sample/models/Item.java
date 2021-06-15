@@ -3,13 +3,13 @@ package sample.models;
 public class Item {
     private String id;
     private String name;
-    private String price;
+    private double price;
     private String description;
     private String ownerId;
     private String imgSrc;
     private String color;
 
-    public Item(String id, String name, String price, String description, String ownerId, String imgSrc, String color) {
+    public Item(String id, String name, double price, String description, String ownerId, String imgSrc, String color) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -51,11 +51,11 @@ public class Item {
         this.name = name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

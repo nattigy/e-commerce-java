@@ -11,7 +11,7 @@ public class StrategyContext {
         this.strategy = strategy;
     }
 
-    public List<Item> executeStrategy(List<Item> items){
-        return strategy.doFiltering(items);
+    public List<Item> executeStrategy(List<Item> items, String option){
+        return strategy.doFiltering(items, option);
     }
 }

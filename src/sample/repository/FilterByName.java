@@ -3,14 +3,17 @@ package sample.repository;
 import sample.models.Item;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-public class FilterByName implements FilterStrategy{
+public class FilterByName implements FilterStrategy {
     @Override
-    public List<Item> doFiltering(List<Item> items) {
-        return new ArrayList<Item>(
-                Arrays.asList(new Item("9", "Banana", "2.99", "description", "", "../img/banana.png", "E7C00F"))
-        );
+    public List<Item> doFiltering(List<Item> items, String name) {
+        for (Item item : items) {
+            if (item.getName().equals(name)) {
+                return new ArrayList<>(Collections.singletonList(item));
+            }
+        }
+        return new ArrayList<>();
     }
 }

@@ -86,8 +86,9 @@ public class MarketController implements Initializable {
         Database databaseInstance = Database.getInstance();
         ItemRepository repo = new ItemRepository(databaseInstance);
         repo.addItem(
-                new Item((itemRepository.getItems().size() + 1 + ""), addItemName.getText(), addItemPrice.getText(), addItemDescription.getText(), "", "../img/" + addItemPicture.getText(), "000")
+                new Item((itemRepository.getItems().size() + 1 + ""), addItemName.getText(), Double.parseDouble(addItemPrice.getText()), addItemDescription.getText(), "", "../img/" + addItemPicture.getText(), "000")
         );
+        items = itemRepository.getItems();
         buildItems();
     }
 
@@ -129,13 +130,13 @@ public class MarketController implements Initializable {
 
     public void filterByName(ActionEvent actionEvent) {
         StrategyContext context = new StrategyContext(new FilterByName());
-        items = context.executeStrategy(itemRepository.getItems());
+        items = context.executeStrategy(itemRepository.getItems(), filterName.getText());
         buildItems();
     }
 
     public void filterByPrice(ActionEvent actionEvent) {
         StrategyContext context = new StrategyContext(new FilterByPrice());
-        items = context.executeStrategy(itemRepository.getItems());
+        items = context.executeStrategy(itemRepository.getItems(), filterPrice.getText());
         buildItems();
     }
 
