@@ -1,0 +1,124 @@
+@startuml
+class Item {
+    private String id;
+    private String name;
+    private String price;
+    private List<Category> categoryList;
+    private String description;
+    private List<String> images;
+    private String ownerId;
+
+    public String getId();
+    public String getName();
+    public void setName(String name);
+    public String getPrice();
+    public void setPrice(String price);
+    public List<Category> getCategoryList();
+    public void setCategoryList(List<Category> categoryList);
+    public String getDescription();
+    public void setDescription(String description);
+    public List<String> getImages();
+    public void setImages(List<String> images);
+    public String getOwnerId();
+    public void setOwnerId(String ownerId);
+}
+
+interface User {
+    String id = "";
+    String email = "";
+    String password = "";
+    Role role = null;
+
+    String getId();
+    String getEmail();
+    String getPassword();
+    Role getRole();
+
+    void setId(String id);
+    void setEmail(String email);
+    void setPassword(String password);
+    void setRole(Role role);
+
+}
+
+class Admin implements User {
+    private String id;
+    private String email;
+    private String password;
+    private Role role;
+    private List<Item> items;
+
+    public String getId();
+    public String getEmail();
+    public String getPassword();
+    public Role getRole() ;
+    public void setId(String id) ;
+    public void setEmail(String email) ;
+    public void setPassword(String password);
+    public void setRole(Role role);
+    public List<Item> getItems();
+    public Item createItems(Item items);
+}
+
+class Cart {
+    private String id;
+    private int numberOfItems;
+    private List<Item> items;
+    private int totalPrice;
+
+    public String getId();
+    public void setId(String id);
+    public int getNumberOfItems() ;
+    public void setNumberOfItems(int numberOfItems) ;
+    public List<Item> getItems();
+    public void setItems(List<Item> items);
+    public int getTotalPrice();
+    public void setTotalPrice(int totalPrice) ;
+}
+
+ class Customer implements User{
+    private String id;
+    private String email;
+    private String password;
+    private Role role;
+    private String phoneNumber;
+    private Cart cartId;
+
+    public String getId();
+    public String getEmail();
+    public String getPassword();
+    public Role getRole() ;
+    public void setId(String id);
+    public void setEmail(String email);
+    public void setPassword(String password);
+    public void setRole(Role role);
+    public String getPhoneNumber();
+    public void setPhoneNumber(String phoneNumber);
+    public Cart getCartId();
+    public void setCartId(Cart cartId);
+}
+
+class Role {
+    private String name;
+
+    public String getName() ;
+    public void setName(String name);
+}
+
+class Category {
+    private String id;
+    private String name;
+
+    public String getId();
+    public void setId(String id);
+
+    public String getName();
+    public void setName(String name);
+}
+
+Category <- Item
+Item -> Cart
+Customer <- Cart
+Role -> User
+
+@enduml
